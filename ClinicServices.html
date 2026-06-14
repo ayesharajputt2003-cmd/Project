@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> CarePlus Clinic | Trusted Healthcare </title>
+    <style>
+* {
+    font-family: 'Segoe UI', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+body {
+    background: rgb(20, 20, 20);
+}
+/* header secion styling  */
+.header {
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(6px);
+    justify-content: space-evenly;
+    display: flex;
+    height: 80px;
+    padding: 20px 30px;
+}
+/* logo styling */
+.logo {
+    font-size: 35px;
+    font-weight: bold;
+}
+.logo span {
+     /* color: #ffffff */
+    color: #e63946;
+}
+/* header link styling and hover effect*/
+nav a {
+    text-decoration: none;
+    padding: 0 10px;
+    font-size: 18px;
+}
+nav :hover {
+    color: #e63946;
+}
+/* call button and hover effect */
+.call-btn a {
+    background: #e63946;
+    height: 30px;
+    padding: 5px 12px;
+    text-decoration: none;
+    border-radius: 15px;
+    text-align: center;
+}
+.call-btn :hover {
+    /* border-bottom: 2px solid #fff; */
+    color: #000;
+    background-color: #fff;
+}
+
+.services{
+    text-align: center;
+    margin:  100px 0;
+}
+.cards{
+    display: flex;
+    text-align: center;
+    margin: 100px 200px;
+    justify-content: space-evenly;
+    border:  2px solid transparent;
+}
+.gernal-card, .specialist-card, .lab-card{
+    background-color: #353333;
+    border-radius: 15px;
+    padding: 20px 20px;
+}
+    </style>
+</head>
+<body>
+    <!-- header section -->
+    <header class="header">
+        <div class="logo">Care<span>Plus</span>Clinic</div>
+        <nav>
+            <a href="ClinicHomepage.html"> Home </a>
+            <a href="ClinicServices.html"> Services </a>
+            <a href="ClinicAbout.html"> About </a>
+            <a href="ClinicContact.html"> Contact </a>
+        </nav>
+        <div class="call-btn">
+            <a href="tel:+917983245549"> Call Now </a>
+        </div>
+    </header>
+
+    <main class="services">
+        <h1> Our Services </h1>
+          <div> Complete health care under one roof</div>
+        <div class="cards">
+            <div class="gernal-card"> <b> General Checkup </b> 
+                <p> Routine health examinations and diagnosis </p>
+            </div>
+
+            <div class="specialist-card">
+               <b> Specialist Consultation</b> 
+                <p> Experienced Doctors across multiple specialties  </p>
+            </div>
+
+            <div class="lab-card">
+             <b>   Diagnostics & Lab</b>
+                <p> Accurate reports using modern equipment </p>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
