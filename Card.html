@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link rel="icon" href="https://miro.medium.com/v2/resize:fit:960/1*OlyP02fRFe8pEkJgb6vGTQ.png"
+        type="WEBTECH/html1-photo.png">
+
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #ffe9e9;
+            padding: 40px;
+        }
+
+        .card {
+            width: 450px;
+            background-color: white;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            margin: auto;
+            height: 550px;
+            box-shadow: 0 80px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .card img {
+            width: 430px;
+            height: 250px;
+            display: block;
+            border-radius: inherit;
+            margin: 5px 8px;
+        }
+
+        .card-content {
+            text-align: left;
+            margin-left: 30px;
+            padding-bottom: 10px;
+        }
+
+        .card-content h3 {
+            font-size: 18px;
+            margin-top: 15px;
+            text-transform: capitalize;
+            margin-bottom: 30px;
+        }
+
+        .card-content p {
+            font-size: 14px;
+            color: #474747;
+        }
+
+        .price {
+            padding-top: 2px;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            font-size: 23px;
+            font-weight: bold;
+        }
+
+        .price2 {
+            font-size: 17px;
+            text-decoration: line-through;
+        }
+
+        .btn {
+            text-align: center;
+            text-decoration: none;
+            background-color: green;
+            color: white;
+            display: block;
+            padding: 5px 10px;
+            margin: 0 10px;
+            border-radius: 3px;
+        }
+
+        .btn:hover {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .offer {
+            text-decoration: none;
+            background-color: coral;
+            color: #fff;
+            padding: 0 10px;
+            border-radius: 3px;
+            width: 50px;
+            margin-left: 5px;
+            font-size: 15px;
+        }
+
+
+         .btn2 {
+              text-align: center;
+            text-decoration: none;
+            border: 2px solid blue;
+            color: blue;
+            display: block;
+            padding: 5px 10px;
+            margin: 0 10px;
+            border-radius: 3px;
+        }
+
+        .btn2:hover {
+            background-color: #000;
+            color: #fff;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <div class="card">
+        <img src="https://miro.medium.com/v2/resize:fit:960/1*OlyP02fRFe8pEkJgb6vGTQ.png" alt="">
+
+        <div class="card-content">
+            <h3> Complete Full stack web developer</h3>
+            <p> Live + Recording Session </p>
+            <div class="price">
+                Rs.999
+                <span class="price2"><i class="fa-solid fa-indian-rupee-sign"></i> 7500 </span>
+                <a href="#" class="offer"> 87% off</a>
+            </div>
+
+            <div> 
+               <div> <span style="color: cadetblue;"> +<i class="fa-solid fa-indian-rupee-sign"></i>4000 </span> (certificate + placement)</div>
+               <div style="color: red;"><i class="fa-solid fa-stopwatch"></i> New Batch: 22 <sup>nd</sup> Dec 2025</div>
+
+               <br>
+            </div> 
+            <a href="#" class="btn"> Buy Complete Course </a>
+            <br>
+            <a href="#" class="btn2"> Book Demo Class @</a>
+        </div>
+    </div>
+</body>
+
+</html>
