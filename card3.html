@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(120deg, #1a1a1a, #16213e, #0e3455);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .page {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .login-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px 35px;
+            width: 350px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0 01);
+            color: #fff;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            transition: all 0.4s ease;
+        }
+
+        .login-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 28px;
+            margin-bottom: 6px;
+            animation: fadeIn 2s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        header p {
+            opacity: 0.75;
+            animation: fadeIn 2s ease forwards;
+        }
+
+        /* field styling start  */
+        .field {
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        .field input {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            outline: none;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            font-size: 15px;
+            color: #fff;
+        }
+
+        .field label {
+            position: absolute;
+            top: 50%;
+            left: 15px;
+            transform: translateY(-50%);
+            color: #aaa;
+            pointer-events: none;
+            transition: all 0.5s ease;
+        }
+
+        .field input:focus+label,
+        .field input:valid+label {
+            top: -10px;
+            left: 10px;
+            font-size: 14px;
+            color: #aaa;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            color: #fff;
+            background: linear-gradient(90deg, #4CC9F0, #4895EF);
+            box-shadow: 0 0 0 rgba(72, 149, 255, 0.8);
+            transition: all 0.4s;
+            cursor: pointer;
+        }
+
+        button:hover {
+            box-shadow: 0 0 25px rgba(72, 149, 255, 0.8);
+            transform: scale(1.05);
+        }
+
+        footer {
+            text-align: center;
+            position: relative;
+            top: 15px;
+        }
+
+        footer a {
+            color: #4895EF;
+            text-decoration: none;
+            font-size: 14px;
+
+        }
+        a:hover {
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <main class="page">
+        <section class="login-card">
+            <header>
+                <h1>Welcome Back</h1>
+                <p>Login to Continue</p>
+            </header>
+            <form action="">
+                <div class="field">
+                    <input type="email" required>
+                    <label for="">Email</label>
+                </div>
+
+                <div class="field">
+                    <input type="password" required>
+                    <label for="">password</label>
+                </div>
+                <button type="submit"> Login </button>
+
+                <footer >
+                    <a href="#">Forgot Password?</a>
+                </footer>
+            </form>
+        </section>
+    </main>
+</body>
+
+</html>
