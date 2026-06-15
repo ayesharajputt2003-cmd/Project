@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+     <link rel="icon" href="https://www.nicepng.com/png/detail/985-9857805_html5-css3-logo-png-html-and-css-logo.png" type="WebTech/html.png">
+    <style>
+        * {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f4;
+            padding: 20px;
+            cursor: pointer;
+        }
+
+        .container {
+            width: 400px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            margin: auto;
+        }
+
+        input, select {
+            
+            width: 100%;
+            height: 25px;
+            border: 1px solid #777777;
+            border-radius: 6px;
+            margin-bottom: 15px 0;
+        }
+
+        .container h1 {
+            font-size: 22px;
+            text-align: center;
+            border-bottom: 2px solid black;
+            padding-bottom: 10px;
+        }
+
+        button {
+            width: 100%;
+            height: 25px;
+            background-color: blue;
+            color: #f4f4f4;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Student Registration Form</h1>
+        <form action="Submit_form.html" method="GET">
+            <label for="name"> Full Name </label>
+            <input type="text" id="name" name="name" placeholder="Enter Your Name" required>
+            <br><br>
+
+            <label for="age"> Age </label>
+            <input type="number" id="age" name="age" placeholder="Enter Your Age" required>
+            <br><br>
+
+            <label for="email"> Enter Your Email </label>
+            <input type="email" id="email" name="email" placeholder="Enter Your email" required>
+            <br><br>
+
+            <label for="course"> Course </label>
+            <select name="course" id="course">
+                <option value="" selected disabled> Select course</option>
+                <option value="HTML5"> HTML5 </option>
+                <option value="CSS3"> CSS3 </option>
+                <option value="JavaScript ">JavaScript </option>
+            </select>
+            <br><br><br>
+
+            <button type="submit" >Submit Details</button>
+
+        </form>
+    </div>
+
+</body>
+
+</html>
