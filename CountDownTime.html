@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: url('https://wallpaperaccess.com/full/1635791.jpg');
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100vh;
+        }
+
+        .clock {
+            color: white;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 3rem;
+            border-radius: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        h1 {
+            text-align: center;
+            margin-block: 2rem;
+            font-size: 2.5rem;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        .days {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .days h1 {
+            font-size: 2rem;
+            color: #ffd700;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+
+        .time {
+            display: flex;
+            gap: 1.5rem;
+            text-align: center;
+            justify-content: center;
+        }
+
+        .date input {
+            width: 100%;
+            margin-block: 1rem;
+            padding: 1rem 0;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        .time input {
+            padding: 1.5rem;
+            width: 100px;
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 1rem;
+            outline: none;
+            color: #fff;
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .time label {
+            display: block;
+            margin-top: 0.5rem;
+            font-size: 1rem;
+            color: #ccc;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        input {
+            padding: 2rem;
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 1rem;
+            outline: none;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .date input {
+            background-color: rgba(0, 0, 0, 0.8);
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .dayname h1{
+            color: rgb(173, 237, 128);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="clock">
+        <h1> Digital Clock</h1>
+        <div class="date">
+            <input type="text" id="date" readonly>
+        </div>
+        <div class="time">
+            <div class="hour">
+                <input type="text" id="hour" readonly>
+                <br>
+                <label for="">Hours</label>
+            </div>
+            <div class="minute">
+                <input type="text" id="minute" readonly>
+                <br>
+                <label for="">Minutes</label>
+            </div>
+            <div class="second">
+                <input type="text" id="second" readonly>
+                <br>
+                <label for="">Seconds</label>
+            </div>
+        </div>
+        <div class="dayname">
+            <h1 id="day">Sunday</h1>
+        </div>
+    </div>
+
+    <script>
+    
+        function clock() {
+            // Get all elements
+            let dateInput = document.getElementById('date');
+            let hourInput = document.getElementById('hour');
+            let minuteInput = document.getElementById('minute');
+            let secondInput = document.getElementById('second');
+            let dayInput = document.getElementById('day');
+            // Main function to update clock
+            function updateDate() {
+                let currentDate = new Date();
+                dateInput.value = currentDate.toDateString();
+            }
+            updateDate();
+
+            function updateHour(){
+                let currentHour = new Date();
+                hourInput.value = currentHour.getHours();
+            }
+
+            updateHour();
+
+            function updateminute(){
+                let currentminute = new Date();
+                minuteInput.value = currentminute.getMinutes();
+            }
+
+            updateminute();
+
+
+            function updateSecond(){
+                let currentSecond = new Date();
+                secondInput.value = currentSecond.getSeconds();
+            }
+
+            updateSecond();
+
+
+            function updateDay(){
+                let Daysname = ['sunday' , 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+                let currentdays = new Date();
+                dayInput.textContent = Daysname[currentdays.getDay()];
+            }
+
+            updateDay();
+                setInterval(clock, 1000);
+        }
+        
+        clock();
+    </script>
+
+</body>
+
+</html>
