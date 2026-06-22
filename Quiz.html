@@ -3,200 +3,183 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz Question</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+    <title>Quiz App</title>
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, Helvetica, sans-serif;
-        }
+body {
+    font-family: Arial;
+    text-align: center;
+    background: #f4f4f4;
+}
 
-        body {
-            display: flex;
-            justify-content: center;
-            height: 100vh;
-            width: 100%;
-            align-items: center;
-            background-color: antiquewhite;
-        }
+.question {
+    margin: 20px;
+}
 
-        .Quiz-container {
-            background-color: #fff;
-            padding: 10rem;
-            border-radius: 15px;
-            font-size: 24px;
-        }
+.option {
+    display: block;
+    margin: 10px auto;
+    padding: 12px;
+    width: 60%;
+    border: 2px solid #333;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: white;
+    transition: 0.3s;
+}
 
-        .btn {
-            display: flex;
-            flex-direction: column;
-        }
+.option:hover {
+    background-color: #eee;
+}
 
-        .Prev-Next-button {
-            display: flex;
-            justify-content: space-evenly;
-        }
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+#Score {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+</style>
+
+
     </style>
+
 </head>
 
 <body>
 
-    <div class="Quiz-container">
+    <h2>Quiz Application</h2>
 
-        <h3 class="text-center mb-4">Quiz App</h3>
-
-        <div class="d-flex justify-content-between mb-3 ">
-            <span>Question
-                <span id="QNumber">1</span>
-                <span>/10</span>
-
-
-                <span>Score: <span id="score">0</span></span>
-        </div>
-
-        <div class="mb-4">
-            <h5 id="question">
-                What does HTML stand for?
-            </h5>
-        </div>
-
-        <div class="options">
-            <button class="btn btn-outline-primary w-100 mb-2 option">option 1</button>
-
-            <button class="btn btn-outline-primary w-100 mb-2 option">option 2</button>
-
-            <button class="btn btn-outline-primary w-100 mb-2 option">option 3</button>
-
-            <button class="btn btn-outline-primary w-100 mb-2 option">option 4</button>
-        </div>
-
-        <div class="Prev-Next-button  mt-4">
-            <button class="btn btn-secondary" id="Previous">Previous</button>
-            <button class="btn btn-primary" id="Next">Next</button>
-        </div>
-
+    <div class="question">
+        <span id="Number"></span>
+        <h3 id="Question"></h3>
     </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"> </script>
+    <h3>Score: <span id="Score">0</span></h3>
+
+    <div class="options">
+        <button class="option"></button>
+        <button class="option"></button>
+        <button class="option"></button>
+        <button class="option"></button>
+    </div>
+
+    <br>
+
+    <button id="Previous">Previous</button>
+    <button id="Next">Next</button>
+
+    <div class="container"></div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
     <script>
 
-        let CurrentQuestion = 0;
-
-
-        $("#Next").click(function () {
-            if (CurrentQuestion<10) {
-                CurrentQuestion++;
-                $("#QNumber").text(CurrentQuestion);
-
-                loadQuestion();
-            }
-        })
-
-        $("#Previous").click(function(){
-            if(CurrentQuestion>0){
-                CurrentQuestion--;
-                $("#QNumber").text(CurrentQuestion);
-                loadQuestion();
-            }
-        })
-
-        
-
-        const quiz = [
+        const Quiz = [
             {
-                question: "What does HTML stand for?",
-                options: ["Hyper Text Markup Language", "High Text Machine Language", "Hyperlinks Text Language", "None"],
-                answer: 0
+                question: "What is HTML?",
+                option: ["Hyper Text Markup Language", "High Text Machine Language", "Home Tool Markup Language", "None"],
+                answer: "Hyper Text Markup Language"
             },
-
             {
-                question: "CSS stands for?",
-                options: ["Creative Style Sheet", "Cascading Style Sheets", "Computer Style Sheet", "Color Style Sheet"],
-                answer: 1
+                question: "What is CSS?",
+                option: ["Cascading Style Sheets", "Computer Style Sheets", "Creative Style Sheets", "None"],
+                answer: "Cascading Style Sheets"
             },
-
             {
-                question: "Which language is used to make a webpage interactive?",
-                options: ["HTML","CSS","JavaScript","SQL"],
-                answer: 2
-            },
-
-            {
-                question: "Which tag is used to create a hyperlink in HTML?",
-                options: ["<link>","<a>","<href>","<h1>"],
-                answer: 1
-            },
-
-            {
-                question: "Which CSS property changes the text color?",
-                options: ["font-color","background-color","color","text-style"],
-                answer: 2
-            },
-
-            {
-                question: "Which company developed JavaScript?",
-                options: ["Microsoft","Netscape","Google","Apple"],
-                answer: 1
-            },
-
-            {
-                question: "Which symbol is used for comments in JavaScript?",
-                options: ["//","**","##","<!-- -->"],
-                answer: 0
-            },
-
-            {
-                question: "Which method is used to print in the browser console?",
-                options: ["console.print()","console.log()","print()","document.write()"
-                ],
-                answer: 1
-            },
-
-            {
-                question: "Which HTML tag is used to insert an image?",
-                options: ["<picture>","<img>","<image>","<src>"],
-                answer: 1
-            },
-
-            {
-                question: "Which keyword is used to declare a variable in JavaScript?",
-                options: ["var","let","const","All of the above"],
-                answer: 3
+                question: "Which language is used for interactivity?",
+                option: ["HTML", "CSS", "JavaScript", "SQL"],
+                answer: "JavaScript"
             }
         ];
 
-        function loadQuestion(){
-            $("#question").text(quiz.question);
+        let count = 0;
+        let score = 0;
+        let answered = false;
 
-              for (let i = 0; i < 4; i++) {
-        $(".option").eq(i).text(quiz[CurrentQuestion].options[i]);
-    }
+        function showQuestion() {
+
+            if (count >= Quiz.length) return;
+
+            $("#Number").text(count + 1);
+            $("#Question").text(Quiz[count].question);
+
+            $(".option").css("background-color", "white");
+
+            $(".option").eq(0).text(Quiz[count].option[0]);
+            $(".option").eq(1).text(Quiz[count].option[1]);
+            $(".option").eq(2).text(Quiz[count].option[2]);
+            $(".option").eq(3).text(Quiz[count].option[3]);
+
+            answered = false;
         }
 
+        showQuestion();
 
+        // OPTION CLICK (ANSWER CHECK + SCORE)
+        $(".option").off("click").on("click", function () {
 
-        let score = 0;
-        
-        $(".option").click(function(){
+            if (answered) return;
 
-            let select = $(".option").index(this);
+            let selectText = $(this).text();
+            let correctAnswer = Quiz[count].answer;
 
-            if(select === quiz[CurrentQuestion].answer){
+            $(".option").css("background-color", "white");
+
+            if (selectText === correctAnswer) {
+
+                $(this).css("background-color", "lightgreen");
                 score++;
-                $("#score").text(score);
-                alert("Correct Answer");
-            }
-            else {
-                alert("Wrong Answer")
+                $("#Score").text(score);
+
+            } else {
+
+                $(this).css("background-color", "red");
+
+                $(".option").each(function () {
+                    if ($(this).text() === correctAnswer) {
+                        $(this).css("background-color", "lightgreen");
+                    }
+                });
+
             }
 
-        })
+            answered = true;
 
+        });
+
+        // NEXT BUTTON
+        $("#Next").off("click").on("click", function () {
+
+            if (count < Quiz.length - 1) {
+                count++;
+                showQuestion();
+            } else {
+
+                $(".question").hide();
+                $(".options").hide();
+                $("#Next").hide();
+                $("#Previous").hide();
+                $("#Score").parent().hide();
+
+                $(".container").html("<h2>🎉 Congratulations! Quiz Completed</h2>");
+            }
+
+        });
+
+        // PREVIOUS BUTTON
+        $("#Previous").off("click").on("click", function () {
+
+            if (count > 0) {
+                count--;
+                showQuestion();
+            }
+
+        });
 
     </script>
 
