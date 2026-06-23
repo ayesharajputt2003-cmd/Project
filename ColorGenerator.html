@@ -117,50 +117,62 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"> </script>
 
+
     <script>
-        $(document).ready(function () {
-            $("#Red").click(function () {
-                $(".body").css("background", "red");
 
-            })
 
-            $("#lightblue").click(function () {
-                $("body").css("background", "lightblue")
-            })
+        let red = document.getElementById('Red');
+        let lightblue = document.getElementById('lightblue');
+        let green = document.getElementById('green');
+        let blue = document.getElementById('blue');
+        let yellow = document.getElementById('yellow');
+        let inputbox = document.getElementById('input-box');
+        let RGBAButton = document.getElementById('GenerateButton');
 
-            $("#green").click(function () {
-                $("body").css("background", "green")
-            })
+        red.addEventListener('click', function () {
+             document.body.style.background = "red";
+            inputbox.value = red.innerText;
+        })
 
-            $("#blue").click(function () {
-                $("body").css("background", "blue")
-            })
+        lightblue.addEventListener('click', function () {
+            document.body.style.background = "lightblue";
+            inputbox.value = lightblue.innerText;
+        })
 
-            $("#yellow").click(function () {
-                $("body").css("background", "yellow")
-            })
+        green.addEventListener('click', function(){
+            document.body.style.background = "green";
+            inputbox.value = green.innerText;
+        })
 
-            // text set in input box 
-            $("button").click(function () {
-                let color = $(this).text();
-                $("#input-box").val(color);
-            })
+         yellow.addEventListener('click', function(){
+            document.body.style.background = "yellow";
+            inputbox.value = yellow.innerText;
+        })
 
-            $("#GenerateButton").click(function () {
-                let red = Math.floor(Math.random() * 256);
-                let green = Math.floor(Math.random() * 256);
-                let blue = Math.floor(Math.random() * 256);
+         blue.addEventListener('click', function(){
+            document.body.style.background = "blue";
+            inputbox.value = blue.innerText;
+        })
 
-                let RGB = `rgb(${red}, ${green}, ${blue})`;
+        RGBAButton.addEventListener('click', function(){
+            
+            let red = Math.floor(Math.random() * 256);
+            let green = Math.floor(Math.random() * 256);
+            let blue = Math.floor(Math.random() * 256);
+            
+            let RGBA = `rgb(${red}, ${green}, ${blue})`;
+             document.body.style.background = RGBA;
 
-                $("body").css("background-color", RGB);
-                $("#input-box").val(RGB);
-            })
+             inputbox.value = RGBA;
 
         })
 
 
-    </script>
-</body>
+      
+
+
+
+       </script>
+       </body>
 
 </html>
