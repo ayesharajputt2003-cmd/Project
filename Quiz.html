@@ -4,50 +4,51 @@
 <head>
     <meta charset="UTF-8">
     <title>Quiz App</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
 
     <style>
-body {
-    font-family: Arial;
-    text-align: center;
-    background: #f4f4f4;
-}
+        body {
+            font-family: Arial;
+            text-align: center;
+            background: #f4f4f4;
+        }
 
-.question {
-    margin: 20px;
-}
+        .question {
+            margin: 20px;
+        }
 
-.option {
-    display: block;
-    margin: 10px auto;
-    padding: 12px;
-    width: 60%;
-    border: 2px solid #333;
-    border-radius: 8px;
-    cursor: pointer;
-    background-color: white;
-    transition: 0.3s;
-}
+        #Number {
+            margin-block: 10px;
+            font-size: 20px;
+        }
 
-.option:hover {
-    background-color: #eee;
-}
+        .option {
+            display: block;
+            margin: 10px auto;
+            padding: 15px;
+            width: 60%;
+            border: 2px solid #adacac;
+            border-radius: 8px;
+            cursor: pointer;
+            background-color: #cfcece;
+            transition: 0.3s;
+        }
 
-button {
-    padding: 10px 20px;
-    margin: 10px;
-    cursor: pointer;
-}
+        .option:hover {
+            background-color: #eee;
+        }
 
-#Score {
-    font-weight: bold;
-    font-size: 20px;
-}
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+        }
 
-</style>
-
-
+        #Score {
+            font-weight: bold;
+            font-size: 20px;
+        }
     </style>
-
 </head>
 
 <body>
@@ -59,7 +60,7 @@ button {
         <h3 id="Question"></h3>
     </div>
 
-    <h3>Score: <span id="Score">0</span></h3>
+    <h3>Score: <span id="Score"></span></h3>
 
     <div class="options">
         <button class="option"></button>
@@ -70,10 +71,8 @@ button {
 
     <br>
 
-    <button id="Previous">Previous</button>
-    <button id="Next">Next</button>
-
-    <div class="container"></div>
+    <button id="Previous" class="btn btn-primary">Previous</button>
+    <button id="Next" class="btn btn-primary">Next</button>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
@@ -82,105 +81,111 @@ button {
         const Quiz = [
             {
                 question: "What is HTML?",
-                option: ["Hyper Text Markup Language", "High Text Machine Language", "Home Tool Markup Language", "None"],
-                answer: "Hyper Text Markup Language"
+                option: [
+                    "Hyper Text scripting language",
+                    "Hyper Text markup language",
+                    "Procedural Programming language",
+                    "Hyper text markup language"
+                ],
+                Answer: "Hyper Text markup language"
             },
             {
                 question: "What is CSS?",
-                option: ["Cascading Style Sheets", "Computer Style Sheets", "Creative Style Sheets", "None"],
-                answer: "Cascading Style Sheets"
+                option: [
+                    "Cascading style sheet",
+                    "Cascading standing sheet",
+                    "cascading scripting sheet",
+                    "all of above"
+                ],
+                Answer: "Cascading style sheet"
             },
             {
-                question: "Which language is used for interactivity?",
-                option: ["HTML", "CSS", "JavaScript", "SQL"],
-                answer: "JavaScript"
+                question: "What is JavaScript?",
+                option: [
+                    "Use to add functionality and interactivity",
+                    "Used to add styling",
+                    "Used to create structure of webpage",
+                    "All of these"
+                ],
+                Answer: "Use to add functionality and interactivity"
             }
         ];
+
+        let number = document.getElementById('Number');
+        let Previous = document.getElementById('Previous');
+        let Next = document.getElementById('Next');
+        let Question = document.getElementById('Question');
+        let scoreNumber = document.getElementById('Score');
 
         let count = 0;
         let score = 0;
         let answered = false;
 
+        // 🔥 Function to show question + options
         function showQuestion() {
+            number.innerText = count + 1;
+            Question.innerText = Quiz[count].question;
 
-            if (count >= Quiz.length) return;
-
-            $("#Number").text(count + 1);
-            $("#Question").text(Quiz[count].question);
-
-            $(".option").css("background-color", "white");
-
-            $(".option").eq(0).text(Quiz[count].option[0]);
-            $(".option").eq(1).text(Quiz[count].option[1]);
-            $(".option").eq(2).text(Quiz[count].option[2]);
-            $(".option").eq(3).text(Quiz[count].option[3]);
-
-            answered = false;
+            $('.option').eq(0).text(Quiz[count].option[0]);
+            $('.option').eq(1).text(Quiz[count].option[1]);
+            $('.option').eq(2).text(Quiz[count].option[2]);
+            $('.option').eq(3).text(Quiz[count].option[3]);
         }
 
+        // Initial load
         showQuestion();
+        $('#Score').text(score);
 
-        // OPTION CLICK (ANSWER CHECK + SCORE)
-        $(".option").off("click").on("click", function () {
+        // NEXT button
+        Next.addEventListener('click', function () {
+            if (count < Quiz.length - 1) {
+                count++;
+                answered = false;
+                showQuestion();
+            }
+        });
+
+        // PREVIOUS button
+        Previous.addEventListener("click", function () {
+            if (count > 0) {
+                count--;
+                answered = false;
+                showQuestion();
+            }
+        });
+
+        // Option click
+        $('.option').click(function () {
 
             if (answered) return;
 
-            let selectText = $(this).text();
-            let correctAnswer = Quiz[count].answer;
-
-            $(".option").css("background-color", "white");
-
-            if (selectText === correctAnswer) {
-
-                $(this).css("background-color", "lightgreen");
-                score++;
-                $("#Score").text(score);
-
-            } else {
-
-                $(this).css("background-color", "red");
-
-                $(".option").each(function () {
-                    if ($(this).text() === correctAnswer) {
-                        $(this).css("background-color", "lightgreen");
-                    }
-                });
-
-            }
-
             answered = true;
 
+            let selectedText = $(this).text();
+            let correctText = Quiz[count].Answer;
+
+            if (selectedText === correctText) {
+                alert("Correct Answer");
+                score++;
+                $('#Score').text(score);
+            } else {
+                alert("Wrong Answer");
+            }
         });
 
-        // NEXT BUTTON
-        $("#Next").off("click").on("click", function () {
+        Next.addEventListener('click', function () {
 
             if (count < Quiz.length - 1) {
                 count++;
+                answered = false;
                 showQuestion();
-            } else {
-
-                $(".question").hide();
-                $(".options").hide();
-                $("#Next").hide();
-                $("#Previous").hide();
-                $("#Score").parent().hide();
-
-                $(".container").html("<h2>🎉 Congratulations! Quiz Completed</h2>");
+            }
+            else {
+                $("#result").text("🎉 Congratulations! You finished the quiz");
+                alert("Quiz Completed 🎉");
             }
 
         });
-
-        // PREVIOUS BUTTON
-        $("#Previous").off("click").on("click", function () {
-
-            if (count > 0) {
-                count--;
-                showQuestion();
-            }
-
-        });
-
     </script>
 
 </body>
